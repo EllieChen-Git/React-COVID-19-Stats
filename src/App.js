@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Clock from "./components/Clock";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    time: 1
+  };
+
+  componentDidMount() {
+    setInterval(() => {
+      this.setState(state => {
+        return { time: state.time + 1 };
+      });
+    }, 1000);
+  }
+
+  render() {
+    const date = new Date();
+    return (
+      <div>
+        <h1>COVID-19 Data Visualisation: Australia & Taiwan</h1>
+
+        <Clock
+          icon="season_autumn.svg" // temp hardcoded
+          timezone={"Australia/Sydney"}
+          hours={date.getHours()}
+          minutes={("0" + date.getMinutes()).slice(-2)}
+          seconds={("0" + date.getSeconds()).slice(-2)}
+        />
+
+        <Clock
+          icon="season_spring.svg" // temp hardcoded
+          timezone={"Asia/Taipei"}
+          hours={date.getHours() - 3} //// temp hardcoded (daylight saving)
+          minutes={("0" + date.getMinutes()).slice(-2)}
+          seconds={("0" + date.getSeconds()).slice(-2)}
+        />
+      </div>
+    );
+  }
 }
 
 export default App;

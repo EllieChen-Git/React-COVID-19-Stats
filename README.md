@@ -15,8 +15,8 @@
 ### Project Goals (What I want to learn/practice in this project)
 
 - Refresh my knowledge of consuming public API & learn how to consume Google Maps API
-- Use TypeScript to write React App (https://create-react-app.dev/docs/adding-typescript/)
 - Use Material UI for design (I'm more experienced in Bootstrap)
+- Use TypeScript to write React App (https://create-react-app.dev/docs/adding-typescript/)
 - Implement end-to-end testing: cypress (or other end-to-end testing)
 
 ---
@@ -29,7 +29,7 @@
 4. Created app with 'create-react-app' and setup README file
 5. Broke down the components & time estimation
 
-**Initial Implementation - 14hrs**
+**Initial Implementation - 19hrs**
 
 |                          :star: Task :star:                           | :fire: Time Estimation :fire: |
 | :-------------------------------------------------------------------: | :---------------------------: |
@@ -41,7 +41,8 @@
 |        Share function: Facebook, Twitter, Link, LinkedIn, Line        |             2hrs              |
 |                 Comment section (like journal entry)                  |             3hrs              |
 |            Error handling: React Error Boundary & Redirect            |              1hr              |
-|                                 Total                                 |             14hrs             |
+|                 Convert from JavaScript to TypeScript                 |              5hr              |
+|                                 Total                                 |             19hrs             |
 
 **Subsequent Implmentation - 10hrs**
 
@@ -82,5 +83,11 @@ The time breakdown for this project is as below:
 - README file:
 - Styling:
 - Deployment: -->
+
+---
+
+### Resources
+
+- SVG images: https://freesvgdesigns.com/
 
 ©2020 Ellie Chen - All Rights Reserved.
