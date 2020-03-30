@@ -9,7 +9,10 @@ const Clock = props => {
   return (
     <div className="container">
       <h3 className="label">{props.timezone}</h3>
-      {hours}:{minutes}:{seconds}
+      <p className="label">
+        {hours}:{minutes}:{seconds}
+      </p>
+
       <div
         className="clock-face"
         style={{ backgroundImage: `url(/${props.icon})` }}

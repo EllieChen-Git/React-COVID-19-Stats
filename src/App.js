@@ -14,26 +14,35 @@ class App extends Component {
     }, 1000);
   }
 
-  render() {
+  grabHourByTimezone(offset) {
     const date = new Date();
+    const utc = date.getTime() + date.getTimezoneOffset() * 60000;
+    const offsetHour = new Date(utc + 3600000 * offset).getHours();
+    return ("0" + offsetHour).slice(-2);
+  }
+
+  render() {
+    const taipeiHour = this.grabHourByTimezone("+8");
+    const sydneyHour = this.grabHourByTimezone("+11");
+    const mins = ("0" + new Date().getMinutes()).slice(-2);
+    const seconds = ("0" + new Date().getSeconds()).slice(-2);
+
     return (
       <div>
         <h1>COVID-19 Data Visualisation: Australia & Taiwan</h1>
-
         <Clock
           icon="season_autumn.svg" // temp hardcoded
-          timezone={"Australia/Sydney"}
-          hours={date.getHours()}
-          minutes={("0" + date.getMinutes()).slice(-2)}
-          seconds={("0" + date.getSeconds()).slice(-2)}
+          timezone={"Sydney - Australia"}
+          hours={sydneyHour}
+          minutes={mins}
+          seconds={seconds}
         />
-
         <Clock
           icon="season_spring.svg" // temp hardcoded
-          timezone={"Asia/Taipei"}
-          hours={date.getHours() - 3} //// temp hardcoded (daylight saving)
-          minutes={("0" + date.getMinutes()).slice(-2)}
-          seconds={("0" + date.getSeconds()).slice(-2)}
+          timezone={"Taipei - Taiwan"}
+          hours={taipeiHour}
+          minutes={mins}
+          seconds={seconds}
         />
       </div>
     );
