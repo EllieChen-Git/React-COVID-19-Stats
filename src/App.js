@@ -1,18 +1,19 @@
 import React, { Component } from "react";
 import Clock from "./components/Clock";
+import ComparisonTable from "./components/ComparisonTable";
 
 class App extends Component {
-  state = {
-    time: 1
-  };
+  // state = {
+  //   time: 1
+  // };
 
-  componentDidMount() {
-    setInterval(() => {
-      this.setState(state => {
-        return { time: state.time + 1 };
-      });
-    }, 1000);
-  }
+  // componentDidMount() {
+  //   setInterval(() => {
+  //     this.setState(state => {
+  //       return { time: state.time + 1 };
+  //     });
+  //   }, 1000);
+  // }
 
   grabHourByTimezone(offset) {
     const date = new Date();
@@ -44,6 +45,7 @@ class App extends Component {
           minutes={mins}
           seconds={seconds}
         />
+        <ComparisonTable />
       </div>
     );
   }
