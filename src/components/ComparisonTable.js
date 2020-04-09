@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import covid from "novelcovid";
-// import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -9,164 +8,157 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 
-// const useStyles = makeStyles({
-//   table: {
-//     minWidth: 650
-//   }
-// });
-
-export default class ComparisonTable extends Component {
-  // const classes = useStyles();
-
+class ComparisonTable extends Component {
   state = {
     twCases: 0,
     twDeaths: 0,
-    twRecovered: 0,
-    twActive: 0,
-    twCritical: 0,
-    twCasesPerMillion: 0,
-    twDeathsPerMillion: 0,
+    twFlag: null,
+    twTodayCases: 0,
+    twTodayDeaths: 0,
+    twTests: 0,
     ausCases: 0,
     ausDeaths: 0,
-    ausRecovered: 0,
-    ausActive: 0,
-    ausCritical: 0,
-    ausCasesPerMillion: 0,
-    ausDeathsPerMillion: 0,
-    rows: []
+    ausFlag: null,
+    ausTodayCases: 0,
+    ausTodayDeaths: 0,
+    ausTests: 0,
+    lastUpdated: null,
   };
+
+  createData(name, australia, taiwan, difference) {
+    return { name, australia, taiwan, difference };
+  }
 
   componentDidMount() {
     (async () => {
       const twData = await covid.getCountry({ country: "Taiwan" });
       const twCases = twData.cases;
-      const twRecovered = twData.recovered;
+      const twFlag = twData.countryInfo.flag;
       const twDeaths = twData.deaths;
-      const twActive = twData.active;
+      const twTodayCases = twData.todayCases;
       const twCritical = twData.critical;
-      const twCasesPerMillion = twData.casesPerOneMillion;
-      const twDeathsPerMillion = twData.deathsPerOneMillion;
-      console.log(twData);
+      const twTodayDeaths = twData.todayDeaths;
+      const twTests = twData.tests;
+      // console.log(twData);
       return this.setState({
         twCases,
-        twRecovered,
+        twFlag,
         twDeaths,
-        twActive,
+        twTodayCases,
         twCritical,
-        twCasesPerMillion,
-        twDeathsPerMillion
+        twTodayDeaths,
+        twTests,
       });
     })();
 
     (async () => {
       const ausData = await covid.getCountry({ country: "Australia" });
       const ausCases = ausData.cases;
-      const ausRecovered = ausData.recovered;
+      const ausFlag = ausData.countryInfo.flag;
       const ausDeaths = ausData.deaths;
-      const ausActive = ausData.active;
+      const ausTodayCases = ausData.todayCases;
       const ausCritical = ausData.critical;
-      const ausCasesPerMillion = ausData.casesPerOneMillion;
-      const ausDeathsPerMillion = ausData.deathsPerOneMillion;
-      console.log(ausData);
+      const ausTodayDeaths = ausData.todayDeaths;
+      const ausTests = ausData.tests;
+      const lastUpdated = new Date(ausData.updated).toString();
+      // console.log(ausData);
       return this.setState({
         ausCases,
-        ausRecovered,
+        ausFlag,
         ausDeaths,
-        ausActive,
+        ausTodayCases,
         ausCritical,
-        ausCasesPerMillion,
-        ausDeathsPerMillion
+        ausTodayDeaths,
+        ausTests,
+        lastUpdated,
       });
     })();
   }
 
-  //   createData(category, tw, aus) {
-  //     return { category, tw, aus };
-  //   }
-
   render() {
-    // this.setState({
-    //   rows: [
-    //     this.createData("Cases", this.state.twCases, this.state.ausCases),
-    //     this.createData("Death", 237, 9.0, 37, 4.3),
-    //     this.createData("Recovered", 262, 16.0, 24, 6.0),
-    //     this.createData("Active", 305, 3.7, 67, 4.3),
-    //     this.createData("Critical", 356, 16.0, 49, 3.9),
-    //     this.createData("Cases per Million", 305, 3.7, 67, 4.3),
-    //     this.createData("Death per Million", 356, 16.0, 49, 3.9)
-    //   ]
-    // });
+    const {
+      twCases,
+      twDeaths,
+      twFlag,
+      twTodayCases,
+      twTodayDeaths,
+      twTests,
+      ausCases,
+      ausDeaths,
+      ausFlag,
+      ausTodayCases,
+      ausTodayDeaths,
+      ausTests,
+      lastUpdated,
+    } = this.state;
+
+    const rows = [
+      this.createData("Cases", ausCases, twCases, ausCases - twCases),
+      this.createData(
+        "Today's Cases",
+        ausTodayCases,
+        twTodayCases,
+        ausTodayCases - twTodayCases
+      ),
+      this.createData("Deaths", ausDeaths, twDeaths, ausDeaths - twDeaths),
+      this.createData(
+        "Today's Deaths",
+        ausTodayDeaths,
+        twTodayDeaths,
+        ausTodayDeaths - twTodayDeaths
+      ),
+      this.createData("Tests Conducted", ausTests, twTests, ausTests - twTests),
+    ];
 
     return (
       <div>
         <h1>Comparison Table</h1>
-        {/* <div>
-          <p>twCases: {this.state.twCases}</p>
-          <p>twRecovered: {this.state.twRecovered}</p>
-          <p>twDeaths: {this.state.twDeaths}</p>
-          <p>twActive: {this.state.twActive}</p>
-          <p>twCritical: {this.state.twCritical}</p>
-          <p>twCasesPerMillion: {this.state.twCasesPerMillion}</p>
-          <p>twDeathsPerMillion}: {this.state.twDeathsPerMillion}</p>
-          <p>---</p>
-          <p>ausCases: {this.state.ausCases}</p>
-          <p>ausRecovered: {this.state.ausRecovered}</p>
-          <p>ausDeaths: {this.state.ausDeaths}</p>
-          <p>ausActive: {this.state.ausActive}</p>
-          <p>ausCritical: {this.state.ausCritical}</p>
-          <p>ausCasesPerMillion: {this.state.ausCasesPerMillion}</p>
-          <p>ausDeathsPerMillion}: {this.state.ausDeathsPerMillion}</p>
-        </div> */}
         <TableContainer component={Paper}>
           <Table aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell>Statistics</TableCell>
-                <TableCell align="left">Taiwan</TableCell>
+                <TableCell>Satistics</TableCell>
                 <TableCell align="left">Australia</TableCell>
+                <TableCell align="left">Taiwan</TableCell>
+                <TableCell align="left">Difference</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Flag</TableCell>
+                <TableCell align="left">
+                  <img
+                    style={{ width: "150px", height: "90px" }} // ratio 5:3 (temp inline styling)
+                    src={ausFlag}
+                    alt="Australia Flag"
+                  />
+                </TableCell>
+                <TableCell align="left">
+                  <img
+                    style={{ width: "150px", height: "90px" }} // ratio 5:3 (temp inline styling)
+                    src={twFlag}
+                    alt="Taiwan Flag"
+                  />
+                </TableCell>
+                <TableCell align="left"></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              <TableRow key={"Cases"}>
-                <TableCell component="th" scope="row">
-                  {"Cases"}
-                </TableCell>
-                <TableCell align="left">{this.state.twCases}</TableCell>
-                <TableCell align="left">{this.state.ausCases}</TableCell>
-              </TableRow>
-              <TableRow key={"Deaths"}>
-                <TableCell component="th" scope="row">
-                  {"Deaths"}
-                </TableCell>
-                <TableCell align="left">{this.state.twDeaths}</TableCell>
-                <TableCell align="left">{this.state.ausDeaths}</TableCell>
-              </TableRow>
-              <TableRow key={"CasesPM"}>
-                <TableCell component="th" scope="row">
-                  {"Cases per Million"}
-                </TableCell>
-                <TableCell align="left">
-                  {this.state.twCasesPerMillion}
-                </TableCell>
-                <TableCell align="left">
-                  {this.state.ausCasesPerMillion}
-                </TableCell>
-              </TableRow>
-              <TableRow key={"DeathsPM"}>
-                <TableCell component="th" scope="row">
-                  {"Deaths per Million"}
-                </TableCell>
-                <TableCell align="left">
-                  {this.state.twDeathsPerMillion}
-                </TableCell>
-                <TableCell align="left">
-                  {this.state.ausDeathsPerMillion}
-                </TableCell>
-              </TableRow>
+              {rows.map((row) => (
+                <TableRow key={row.name}>
+                  <TableCell component="th" scope="row">
+                    {row.name}
+                  </TableCell>
+                  <TableCell align="left">{row.australia}</TableCell>
+                  <TableCell align="left">{row.taiwan}</TableCell>
+                  <TableCell align="left">{row.difference}</TableCell>
+                </TableRow>
+              ))}
             </TableBody>
           </Table>
         </TableContainer>
+        <p>Last updated: {lastUpdated}</p>
       </div>
     );
   }
 }
+
+export default ComparisonTable;

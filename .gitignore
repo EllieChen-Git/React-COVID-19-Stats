@@ -24,4 +24,5 @@ yarn-error.log*
 
 # Added
 .prettierrc
+development-note.md
 /docs-local
