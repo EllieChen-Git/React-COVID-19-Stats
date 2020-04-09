@@ -1,19 +1,8 @@
 import React, { Component } from "react";
 import Clock from "./components/Clock";
+import ComparisonTable from "./components/ComparisonTable";
 
 class App extends Component {
-  state = {
-    time: 1
-  };
-
-  componentDidMount() {
-    setInterval(() => {
-      this.setState(state => {
-        return { time: state.time + 1 };
-      });
-    }, 1000);
-  }
-
   grabHourByTimezone(offset) {
     const date = new Date();
     const utc = date.getTime() + date.getTimezoneOffset() * 60000;
@@ -23,7 +12,7 @@ class App extends Component {
 
   render() {
     const taipeiHour = this.grabHourByTimezone("+8");
-    const sydneyHour = this.grabHourByTimezone("+11");
+    const sydneyHour = this.grabHourByTimezone("+10"); // Consider daylight saving in the future
     const mins = ("0" + new Date().getMinutes()).slice(-2);
     const seconds = ("0" + new Date().getSeconds()).slice(-2);
 
@@ -31,19 +20,20 @@ class App extends Component {
       <div>
         <h1>COVID-19 Data Visualisation: Australia & Taiwan</h1>
         <Clock
-          icon="season_autumn.svg" // temp hardcoded
+          icon="season_autumn.svg" // Consider changing icon based on seasons in the future
           timezone={"Sydney - Australia"}
           hours={sydneyHour}
           minutes={mins}
           seconds={seconds}
         />
         <Clock
-          icon="season_spring.svg" // temp hardcoded
+          icon="season_spring.svg" // Consider changing icon based on seasons in the future
           timezone={"Taipei - Taiwan"}
           hours={taipeiHour}
           minutes={mins}
           seconds={seconds}
         />
+        <ComparisonTable />
       </div>
     );
   }
