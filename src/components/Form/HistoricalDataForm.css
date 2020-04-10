@@ -1,0 +1,13 @@
+.historical-data {
+  width: 1100px;
+  margin: 0 auto;
+}
+
+.historical-data form {
+  background-color: #acf4e6;
+  width: 360px;
+  margin: 0px 25px 0px 0px;
+  padding: 35px 15px 15px 15px;
+  border-radius: 5px;
+  float: left;
+}

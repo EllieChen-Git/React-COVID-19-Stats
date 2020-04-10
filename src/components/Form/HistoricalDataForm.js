@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import useDropdown from "./useDropdown";
+import "./HistoricalDataForm.css";
 
 const dataTest = () => {
   axios
@@ -17,28 +18,38 @@ const dataTest = () => {
 dataTest();
 
 const locations = ["Australia", "Taiwan"];
-const dataset = ["Cases", "Deaths", "Recovered"];
+const categories = ["Cases", "Deaths", "Recovered"];
 
 const HistoricalDataForm = () => {
   // useDropdown = (label, defaultState, options)
   const [location, LocationDropdwon] = useDropdown(
-    "Location",
+    "Location: ",
     "Australia",
     locations
   );
-  const [data, DataDropdown] = useDropdown("Data", "cases", dataset);
+  const [category, CategoryDropdown] = useDropdown(
+    "Category: ",
+    "cases",
+    categories
+  );
   const [dates, updateDates] = useState([]);
-  const [date, DateDropdown] = useDropdown("Date", "", dates);
+  const [date, DateDropdown] = useDropdown("Date: ", "", dates);
 
   return (
-    <div>
-      <h1>Historial Data</h1>
+    <div className="historical-data">
+      <h1>Historical Data</h1>
       <form>
         <fieldset>
           <legend>Select Options</legend>
-          <LocationDropdwon />
-          <DataDropdown />
-          <DateDropdown />
+          <div>
+            <LocationDropdwon />
+          </div>
+          <div>
+            <CategoryDropdown />
+          </div>
+          <div>
+            <DateDropdown />
+          </div>
         </fieldset>
         <button>Submit</button>
       </form>
