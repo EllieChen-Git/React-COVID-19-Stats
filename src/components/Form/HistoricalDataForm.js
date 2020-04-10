@@ -16,92 +16,31 @@ const dataTest = () => {
 
 dataTest();
 
-const locations = [
-  {
-    value: "aus",
-    label: "Australia",
-  },
-  {
-    value: "tw",
-    label: "Taiwan",
-  },
-];
-
-const dataset = [
-  {
-    value: "cases",
-    label: "cases",
-  },
-  {
-    value: "deaths",
-    label: "deaths",
-  },
-  {
-    value: "recovered",
-    label: "recovered",
-  },
-];
+const locations = ["Australia", "Taiwan"];
+const dataset = ["Cases", "Deaths", "Recovered"];
 
 const HistoricalDataForm = () => {
-  const [location, updateLocation] = useState("Australia");
-  const [data, updateData] = useState("cases");
-  const [date, updateDate] = useState("");
+  // useDropdown = (label, defaultState, options)
+  const [location, LocationDropdwon] = useDropdown(
+    "Location",
+    "Australia",
+    locations
+  );
+  const [data, DataDropdown] = useDropdown("Data", "cases", dataset);
   const [dates, updateDates] = useState([]);
+  const [date, DateDropdown] = useDropdown("Date", "", dates);
 
   return (
     <div>
-      <h1>Form </h1>
+      <h1>Historial Data</h1>
       <form>
         <fieldset>
           <legend>Select Options</legend>
-          <label htmlFor="location">
-            Location:
-            <select
-              id="location"
-              value={location}
-              onChange={(e) => updateLocation(e.target.value)}
-              onBlur={(e) => updateLocation(e.target.value)}
-            >
-              {locations.map((location) => (
-                <option key={location.value} value={location.value}>
-                  {location.label}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label htmlFor="data">
-            Data:
-            <select
-              id="data"
-              value={data}
-              onChange={(e) => updateData(e.target.value)}
-              onBlur={(e) => updateData(e.target.value)}
-            >
-              {dataset.map((data) => (
-                <option key={data.value} value={data.value}>
-                  {data.label}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label htmlFor="date">
-            Date:
-            <select
-              disabled={!dates.length}
-              id="date"
-              value={date}
-              onChange={(e) => updateDate(e.target.value)}
-              onBlur={(e) => updateDate(e.target.value)}
-            >
-              <option />
-              {dates.map((date) => (
-                <option key={date.value} value={date.value}>
-                  {date.label}
-                </option>
-              ))}
-            </select>
-          </label>
+          <LocationDropdwon />
+          <DataDropdown />
+          <DateDropdown />
         </fieldset>
+        <button>Submit</button>
       </form>
     </div>
   );
