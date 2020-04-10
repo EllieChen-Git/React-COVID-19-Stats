@@ -1,8 +1,15 @@
 # covid-19 api
 
-• API Repo: https://github.com/NovelCOVID/API
-• Idea Repo: https://github.com/PeggyZWY/COVID-19-VIC
-• Idea Site: http://wenyizhao.me/COVID-19-VIC/
+- API
+  Repo: https://github.com/NovelCOVID/API
+  Docs: https://corona.lmao.ninja/docs/
+  End point (country): https://corona.lmao.ninja/countries/taiwan
+  End point (historical data by country): https://corona.lmao.ninja/v2/historical/australia
+  End point (historical data by country - from 22/01/2020 [cases, deaths, recovered]): https://corona.lmao.ninja/v2/historical/taiwan?lastdays=all
+
+- Inspiration
+  Repo: https://github.com/PeggyZWY/COVID-19-VIC
+  Site: http://wenyizhao.me/COVID-19-VIC/
 
 - React Blog
   https://github.com/EllieChen-Git/React-Practice-Blog
