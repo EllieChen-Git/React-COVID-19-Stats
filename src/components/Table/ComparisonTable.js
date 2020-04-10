@@ -155,7 +155,7 @@ class ComparisonTable extends Component {
             </TableBody>
           </Table>
         </TableContainer>
-        <p>Last updated: {lastUpdated}</p>
+        <p>Last updated: {lastUpdated}</p> {/* Move to App.js or Footer */}
       </div>
     );
   }

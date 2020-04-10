@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Clock from "./components/Clock";
-import ComparisonTable from "./components/ComparisonTable";
-import HistoricalDataForm from "./components/HistoricalDataForm";
+import Clock from "./components/Clock/Clock";
+import ComparisonTable from "./components/Table/ComparisonTable";
+import HistoricalDataForm from "./components/Form/HistoricalDataForm";
 
 class App extends Component {
   grabHourByTimezone(offset) {

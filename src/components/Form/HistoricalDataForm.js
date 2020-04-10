@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import useDropdown from "./useDropdown";
 
 const dataTest = () => {
   axios
@@ -42,8 +43,8 @@ const dataset = [
 ];
 
 const HistoricalDataForm = () => {
-  const [location, setLocation] = useState("Australia");
-  const [data, setData] = useState("cases");
+  const [location, updateLocation] = useState("Australia");
+  const [data, updateData] = useState("cases");
   const [date, updateDate] = useState("");
   const [dates, updateDates] = useState([]);
 
@@ -58,8 +59,8 @@ const HistoricalDataForm = () => {
             <select
               id="location"
               value={location}
-              onChange={(e) => setLocation(e.target.value)}
-              onBlur={(e) => setLocation(e.target.value)}
+              onChange={(e) => updateLocation(e.target.value)}
+              onBlur={(e) => updateLocation(e.target.value)}
             >
               {locations.map((location) => (
                 <option key={location.value} value={location.value}>
@@ -73,8 +74,8 @@ const HistoricalDataForm = () => {
             <select
               id="data"
               value={data}
-              onChange={(e) => setData(e.target.value)}
-              onBlur={(e) => setData(e.target.value)}
+              onChange={(e) => updateData(e.target.value)}
+              onBlur={(e) => updateData(e.target.value)}
             >
               {dataset.map((data) => (
                 <option key={data.value} value={data.value}>
