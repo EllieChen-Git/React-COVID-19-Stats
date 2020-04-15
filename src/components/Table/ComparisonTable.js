@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import covid from "novelcovid";
+import Grid from "@material-ui/core/Grid";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -111,51 +112,55 @@ class ComparisonTable extends Component {
     ];
 
     return (
-      <div>
-        <h1>Comparison Table</h1>
-        <TableContainer component={Paper}>
-          <Table aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell>Satistics</TableCell>
-                <TableCell align="left">Australia</TableCell>
-                <TableCell align="left">Taiwan</TableCell>
-                <TableCell align="left">Difference</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>Flag</TableCell>
-                <TableCell align="left">
-                  <img
-                    style={{ width: "150px", height: "90px" }} // ratio 5:3 (temp inline styling)
-                    src={ausFlag}
-                    alt="Australia Flag"
-                  />
-                </TableCell>
-                <TableCell align="left">
-                  <img
-                    style={{ width: "150px", height: "90px" }} // ratio 5:3 (temp inline styling)
-                    src={twFlag}
-                    alt="Taiwan Flag"
-                  />
-                </TableCell>
-                <TableCell align="left"></TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows.map((row) => (
-                <TableRow key={row.name}>
-                  <TableCell component="th" scope="row">
-                    {row.name}
-                  </TableCell>
-                  <TableCell align="left">{row.australia}</TableCell>
-                  <TableCell align="left">{row.taiwan}</TableCell>
-                  <TableCell align="left">{row.difference}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <p>Last updated: {lastUpdated}</p> {/* Move to App.js or Footer */}
+      <div className="comparison-table-container">
+        <h1>Comparison Table*</h1>
+        <Grid container>
+          <Grid item xs={12}>
+            <TableContainer component={Paper}>
+              <Table aria-label="simple table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Satistics</TableCell>
+                    <TableCell align="left">Australia</TableCell>
+                    <TableCell align="left">Taiwan</TableCell>
+                    <TableCell align="left">Difference</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>Flag</TableCell>
+                    <TableCell align="left">
+                      <img
+                        style={{ width: "150px", height: "90px" }} // ratio 5:3 (temp inline styling)
+                        src={ausFlag}
+                        alt="Australia Flag"
+                      />
+                    </TableCell>
+                    <TableCell align="left">
+                      <img
+                        style={{ width: "150px", height: "90px" }} // ratio 5:3 (temp inline styling)
+                        src={twFlag}
+                        alt="Taiwan Flag"
+                      />
+                    </TableCell>
+                    <TableCell align="left"></TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {rows.map((row) => (
+                    <TableRow key={row.name}>
+                      <TableCell component="th" scope="row">
+                        {row.name}
+                      </TableCell>
+                      <TableCell align="left">{row.australia}</TableCell>
+                      <TableCell align="left">{row.taiwan}</TableCell>
+                      <TableCell align="left">{row.difference}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+            <p>Last updated: {lastUpdated}</p> {/* Move to App.js or Footer */}
+          </Grid>
+        </Grid>
       </div>
     );
   }
