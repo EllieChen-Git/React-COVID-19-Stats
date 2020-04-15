@@ -40,7 +40,6 @@ class ComparisonTable extends Component {
       const twCritical = twData.critical;
       const twTodayDeaths = twData.todayDeaths;
       const twTests = twData.tests;
-      // console.log(twData);
       return this.setState({
         twCases,
         twFlag,
@@ -62,7 +61,6 @@ class ComparisonTable extends Component {
       const ausTodayDeaths = ausData.todayDeaths;
       const ausTests = ausData.tests;
       const lastUpdated = new Date(ausData.updated).toString();
-      // console.log(ausData);
       return this.setState({
         ausCases,
         ausFlag,

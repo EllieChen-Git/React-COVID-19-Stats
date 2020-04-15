@@ -1,5 +1,4 @@
 /* General */
-
 .historical-data-container,
 .comparison-table-container {
   width: 80%;
@@ -7,7 +6,6 @@
 }
 
 /* Form */
-
 .historical-data-form {
   background-color: #acf4e6;
   width: 360px;
@@ -18,8 +16,7 @@
 }
 
 /* Clock */
-
-.clock-container {
+.clock {
   display: inline-block;
 }
 
@@ -27,13 +24,13 @@
   text-align: center;
 }
 
-.clock-face {
+.clock-face-container {
   background-repeat: no-repeat;
   background-size: 45%;
   background-position: center;
 }
 
-.clock {
+.clock-face {
   background: url(/clock.svg) no-repeat center;
   background-size: 88%;
   border-radius: 50%;
@@ -47,7 +44,7 @@
   transition: all 2.5s 0.5s cubic-bezier(0.12, 1.03, 0.34, 1);
 }
 
-.clock::after {
+.clock-face::after {
   background: red;
   border-radius: 50%;
   content: "";
@@ -61,7 +58,7 @@
   height: 2%;
 }
 
-.clock:before {
+.clock-face:before {
   background: black;
   border-radius: 50%;
   content: "";
