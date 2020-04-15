@@ -1,18 +1,36 @@
-.container {
+/* General */
+.historical-data-container,
+.comparison-table-container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* Form */
+.historical-data-form {
+  background-color: #acf4e6;
+  width: 360px;
+  margin: 0px 25px 0px 0px;
+  padding: 35px 15px 15px 15px;
+  border-radius: 5px;
+  float: left;
+}
+
+/* Clock */
+.clock {
   display: inline-block;
 }
 
-.label {
+.clock-label {
   text-align: center;
 }
 
-.clock-face {
+.clock-face-container {
   background-repeat: no-repeat;
   background-size: 45%;
   background-position: center;
 }
 
-.clock {
+.clock-face {
   background: url(/clock.svg) no-repeat center;
   background-size: 88%;
   border-radius: 50%;
@@ -26,7 +44,7 @@
   transition: all 2.5s 0.5s cubic-bezier(0.12, 1.03, 0.34, 1);
 }
 
-.clock::after {
+.clock-face::after {
   background: red;
   border-radius: 50%;
   content: "";
@@ -40,7 +58,7 @@
   height: 2%;
 }
 
-.clock:before {
+.clock-face:before {
   background: black;
   border-radius: 50%;
   content: "";
@@ -54,9 +72,9 @@
   z-index: 0;
 }
 
-.minutes-container,
-.hours-container,
-.seconds-container {
+.clock-minutes-container,
+.clock-hours-container,
+.clock-seconds-container {
   position: absolute;
   top: 0;
   right: 0;
@@ -64,12 +82,12 @@
   left: 0;
 }
 
-.hours-container {
+.clock-hours-container {
   -webkit-animation: rotate 43200s infinite linear;
   animation: rotate 43200s infinite linear;
 }
 
-.hours {
+.clock-hours {
   background: #000;
   position: absolute;
   border-radius: 85%/10%;
@@ -81,7 +99,7 @@
   transform-origin: 50% 100%;
 }
 
-.minutes {
+.clock-minutes {
   background: #000;
   border-radius: 150%/10%;
   position: absolute;
@@ -93,7 +111,7 @@
   transform-origin: 50% 100%;
 }
 
-.seconds {
+.clock-seconds {
   background: red;
   position: absolute;
   z-index: 8;
