@@ -31,9 +31,7 @@ const HistoricalDataForm = () => {
         const historicalData = res.data.timeline[category];
         return setData(historicalData || []);
       })
-      .catch(function (error) {
-        console.log(error);
-      });
+      .catch((err) => console.log(err));
   };
 
   return (
