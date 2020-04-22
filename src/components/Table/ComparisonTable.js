@@ -40,14 +40,13 @@ class ComparisonTable extends Component {
     twCases: 0,
     twDeaths: 0,
     twTests: 0,
-    // "cases": 6625,
-    // "recovered": 4258,
-    // "active": 2296,
-    // "deaths": 71,
-    // "tests": 431734,
+    twRecovered: 0,
+    twActive: 0,
     ausCases: 0,
     ausDeaths: 0,
     ausTests: 0,
+    ausRecovered: 0,
+    ausActive: 0,
     lastUpdated: null,
   };
 
@@ -64,6 +63,8 @@ class ComparisonTable extends Component {
           twCases: res.data.cases,
           twDeaths: res.data.deaths,
           twTests: res.data.tests,
+          twRecovered: res.data.recovered,
+          twActive: res.data.active,
           lastUpdated: new Date(res.data.updated).toString(),
         });
       })
@@ -77,6 +78,8 @@ class ComparisonTable extends Component {
           ausCases: res.data.cases,
           ausDeaths: res.data.deaths,
           ausTests: res.data.tests,
+          ausRecovered: res.data.recovered,
+          ausActive: res.data.active,
         });
       })
       .catch((err) => console.log(err));
@@ -92,16 +95,25 @@ class ComparisonTable extends Component {
       ausDeaths,
       ausFlag,
       ausTests,
+      twRecovered,
+      twActive,
+      ausRecovered,
+      ausActive,
       lastUpdated,
     } = this.state;
 
     const rows = [
-      this.createData("Cases", ausCases, twCases, ausCases - twCases),
-      this.createData("Deaths", ausDeaths, twDeaths, ausDeaths - twDeaths),
+      this.createData("Total Cases", ausCases, twCases, ausCases - twCases),
+      this.createData("- Active", ausActive, twActive, ausActive - twActive),
+      this.createData(
+        "- Recovered",
+        ausRecovered,
+        twRecovered,
+        ausRecovered - twRecovered
+      ),
+      this.createData("- Deaths", ausDeaths, twDeaths, ausDeaths - twDeaths),
       this.createData("Tests Conducted", ausTests, twTests, ausTests - twTests),
     ];
-
-    const placeholderImg = "http://placecorgi.com/150/90";
 
     return (
       <div className="comparison-table-container">
@@ -122,14 +134,14 @@ class ComparisonTable extends Component {
                     <TableCell align="left">
                       <img
                         style={{ width: "150px", height: "90px" }} // ratio 5:3 (temp inline styling)
-                        src={ausFlag || placeholderImg}
+                        src="./aus-flag.png"
                         alt="Australia Flag"
                       />
                     </TableCell>
                     <TableCell align="left">
                       <img
                         style={{ width: "150px", height: "90px" }} // ratio 5:3 (temp inline styling)
-                        src={twFlag || placeholderImg}
+                        src="./tw-flag.png"
                         alt="Taiwan Flag"
                       />
                     </TableCell>
