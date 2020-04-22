@@ -9,32 +9,6 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 
-// const locations = ["Australia", "Taiwan"];
-// const categories = ["cases", "recovered", "active", "deaths", "tests"];
-
-// const ComparisonTable = () => {
-//   const [location, setLocation] = useState("Australia");
-//   const [category, setCategory] = useState("cases");
-//   const [data, setData] = useState([]);
-
-//   const requestData = () => {
-//     axios
-//       .get(`https://corona.lmao.ninja/v2/countries/taiwan`)
-//       .then((res) => {
-//         const locationData = res.data;
-//         return setData(locationData || []);
-//       })
-//       .catch((err) => console.log(err));
-//   };
-
-//   return (
-//     <div className="comparison-table-container">
-//       <h1>Comparison Table*</h1>
-//       {data}
-//     </div>
-//   );
-// };
-
 class ComparisonTable extends Component {
   state = {
     twCases: 0,
@@ -55,10 +29,10 @@ class ComparisonTable extends Component {
   }
 
   componentDidMount() {
-    const twData = axios
+    axios
       .get("https://corona.lmao.ninja/v2/countries/taiwan")
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         return this.setState({
           twCases: res.data.cases,
           twDeaths: res.data.deaths,
@@ -70,10 +44,10 @@ class ComparisonTable extends Component {
       })
       .catch((err) => console.log(err));
 
-    const ausData = axios
+    axios
       .get("https://corona.lmao.ninja/v2/countries/australia")
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         return this.setState({
           ausCases: res.data.cases,
           ausDeaths: res.data.deaths,
@@ -89,11 +63,9 @@ class ComparisonTable extends Component {
     const {
       twCases,
       twDeaths,
-      twFlag,
       twTests,
       ausCases,
       ausDeaths,
-      ausFlag,
       ausTests,
       twRecovered,
       twActive,
