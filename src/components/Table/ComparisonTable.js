@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import covid from "novelcovid";
+import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -13,16 +13,14 @@ class ComparisonTable extends Component {
   state = {
     twCases: 0,
     twDeaths: 0,
-    twFlag: null,
-    twTodayCases: 0,
-    twTodayDeaths: 0,
     twTests: 0,
+    twRecovered: 0,
+    twActive: 0,
     ausCases: 0,
     ausDeaths: 0,
-    ausFlag: null,
-    ausTodayCases: 0,
-    ausTodayDeaths: 0,
     ausTests: 0,
+    ausRecovered: 0,
+    ausActive: 0,
     lastUpdated: null,
   };
 
@@ -31,81 +29,61 @@ class ComparisonTable extends Component {
   }
 
   componentDidMount() {
-    (async () => {
-      const twData = await covid.getCountry({ country: "Taiwan" });
-      const twCases = twData.cases;
-      const twFlag = twData.countryInfo.flag;
-      const twDeaths = twData.deaths;
-      const twTodayCases = twData.todayCases;
-      const twCritical = twData.critical;
-      const twTodayDeaths = twData.todayDeaths;
-      const twTests = twData.tests;
-      return this.setState({
-        twCases,
-        twFlag,
-        twDeaths,
-        twTodayCases,
-        twCritical,
-        twTodayDeaths,
-        twTests,
-      });
-    })();
+    axios
+      .get("https://corona.lmao.ninja/v2/countries/taiwan")
+      .then((res) => {
+        // console.log(res.data);
+        return this.setState({
+          twCases: res.data.cases,
+          twDeaths: res.data.deaths,
+          twTests: res.data.tests,
+          twRecovered: res.data.recovered,
+          twActive: res.data.active,
+          lastUpdated: new Date(res.data.updated).toString(),
+        });
+      })
+      .catch((err) => console.log(err));
 
-    (async () => {
-      const ausData = await covid.getCountry({ country: "Australia" });
-      const ausCases = ausData.cases;
-      const ausFlag = ausData.countryInfo.flag;
-      const ausDeaths = ausData.deaths;
-      const ausTodayCases = ausData.todayCases;
-      const ausCritical = ausData.critical;
-      const ausTodayDeaths = ausData.todayDeaths;
-      const ausTests = ausData.tests;
-      const lastUpdated = new Date(ausData.updated).toString();
-      return this.setState({
-        ausCases,
-        ausFlag,
-        ausDeaths,
-        ausTodayCases,
-        ausCritical,
-        ausTodayDeaths,
-        ausTests,
-        lastUpdated,
-      });
-    })();
+    axios
+      .get("https://corona.lmao.ninja/v2/countries/australia")
+      .then((res) => {
+        // console.log(res.data);
+        return this.setState({
+          ausCases: res.data.cases,
+          ausDeaths: res.data.deaths,
+          ausTests: res.data.tests,
+          ausRecovered: res.data.recovered,
+          ausActive: res.data.active,
+        });
+      })
+      .catch((err) => console.log(err));
   }
 
   render() {
     const {
       twCases,
       twDeaths,
-      twFlag,
-      twTodayCases,
-      twTodayDeaths,
       twTests,
       ausCases,
       ausDeaths,
-      ausFlag,
-      ausTodayCases,
-      ausTodayDeaths,
       ausTests,
+      twRecovered,
+      twActive,
+      ausRecovered,
+      ausActive,
       lastUpdated,
     } = this.state;
 
     const rows = [
-      this.createData("Cases", ausCases, twCases, ausCases - twCases),
+      this.createData("Total Cases", ausCases, twCases, ausCases - twCases),
+      this.createData("- Active", ausActive, twActive, ausActive - twActive),
       this.createData(
-        "Today's Cases",
-        ausTodayCases,
-        twTodayCases,
-        ausTodayCases - twTodayCases
+        "- Recovered",
+        ausRecovered,
+        twRecovered,
+        ausRecovered - twRecovered
       ),
-      this.createData("Deaths", ausDeaths, twDeaths, ausDeaths - twDeaths),
-      this.createData(
-        "Today's Deaths",
-        ausTodayDeaths,
-        twTodayDeaths,
-        ausTodayDeaths - twTodayDeaths
-      ),
+      this.createData("- Deaths", ausDeaths, twDeaths, ausDeaths - twDeaths),
       this.createData("Tests Conducted", ausTests, twTests, ausTests - twTests),
     ];
 
@@ -128,14 +106,14 @@ class ComparisonTable extends Component {
                     <TableCell align="left">
                       <img
                         style={{ width: "150px", height: "90px" }} // ratio 5:3 (temp inline styling)
-                        src={ausFlag}
+                        src="./aus-flag.png"
                         alt="Australia Flag"
                       />
                     </TableCell>
                     <TableCell align="left">
                       <img
                         style={{ width: "150px", height: "90px" }} // ratio 5:3 (temp inline styling)
-                        src={twFlag}
+                        src="./tw-flag.png"
                         alt="Taiwan Flag"
                       />
                     </TableCell>
@@ -150,7 +128,9 @@ class ComparisonTable extends Component {
                       </TableCell>
                       <TableCell align="left">{row.australia}</TableCell>
                       <TableCell align="left">{row.taiwan}</TableCell>
-                      <TableCell align="left">{row.difference}</TableCell>
+                      <TableCell align="left">
+                        {row.difference || "Data Not Available"}
+                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>

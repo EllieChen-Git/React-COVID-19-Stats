@@ -15,6 +15,12 @@
   float: left;
 }
 
+/* Social Buttons */
+
+.social-buttons {
+  display: inline-block;
+}
+
 /* Clock */
 .clock {
   display: inline-block;

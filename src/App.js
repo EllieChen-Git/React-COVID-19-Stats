@@ -3,6 +3,7 @@ import "./App.css";
 import Clock from "./components/Clock/Clock";
 import ComparisonTable from "./components/Table/ComparisonTable";
 import HistoricalDataForm from "./components/Form/HistoricalDataForm";
+import SocialButtons from "./components/Social/SocialButtons";
 
 class App extends Component {
   state = {
@@ -50,6 +51,7 @@ class App extends Component {
 
         <ComparisonTable />
         <HistoricalDataForm />
+        <SocialButtons />
         <p>*Comparsion table data from Worldometers</p>
         <p>**Historial data from Johns Hopkins University</p>
       </div>
