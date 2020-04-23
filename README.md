@@ -14,7 +14,7 @@
 
 ### Project Goals (What I want to learn/practice in this project)
 
-- Refresh my knowledge of consuming public API & learn how to consume Google Maps API
+- Refresh my knowledge of consuming public API and displaying data in React
 - Use Material UI for design (I'm more experienced in Bootstrap)
 - Use TypeScript to write React App (https://create-react-app.dev/docs/adding-typescript/)
 - Implement end-to-end testing: cypress (or other end-to-end testing)
@@ -37,23 +37,23 @@
 |                     Form: React Hooks (dropdown)                      |             2hrs              |
 |                         Theme: React Context                          |              1hr              |
 |            Stats table (AUS, TW, difference): consume API             |             3hrs              |
-|    Trend graph (date & confirmed cases): graph one from news first    |              1hr              |
+|                 Trend graph (date & confirmed cases)                  |        1hr (adjusted)         |
 |        Share function: Facebook, Twitter, Link, LinkedIn, Line        |             2hrs              |
-|                 Comment section (like journal entry)                  |             3hrs              |
+|                 Comment section (like journal entry)                  |       3hrs (cancelled)        |
 |            Error handling: React Error Boundary & Redirect            |              1hr              |
 |                 Convert from JavaScript to TypeScript                 |              5hr              |
 |                                 Total                                 |             19hrs             |
 
 **Subsequent Implmentation - 10hrs**
 
-|                         :star: Task :star:                          | :fire: Time Estimation :fire: |
-| :-----------------------------------------------------------------: | :---------------------------: |
-| Public exposure cases in areas: grab data & consume Google maps API |             3hrs              |
-|                            Styling & RWD                            |             3hrs              |
-|                             Polish docs                             |              1hr              |
-|     Trend graph (date & confirmed cases): create one by myself      |             2hrs              |
-|             Share function: Modal: React Portals & Refs             |              1hr              |
-|                                Total                                |             10hrs             |
+|                         :star: Task :star:                          |    :fire: Time Estimation :fire:     |
+| :-----------------------------------------------------------------: | :----------------------------------: |
+| Public exposure cases in areas: grab data & consume Google maps API |           3hrs (cancelled)           |
+|                            Styling & RWD                            |                 3hrs                 |
+|                             Polish docs                             |                 1hr                  |
+|     Trend graph (date & confirmed cases): create one by myself      | 2hrs (cancelled - see the one above) |
+|             Share function: Modal: React Portals & Refs             |     1hr (adjusted - use library)     |
+|                                Total                                |                10hrs                 |
 
 ---
 

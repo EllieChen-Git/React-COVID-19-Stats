@@ -1,3 +1,51 @@
+### Development Note (23/04/2020)
+
+1. Graph (Recharts)
+
+- static data
+- around 7 points (1/30, 2/15, 2/29, 3/15, 3/31, 4/15)
+- total deaths: reasonable range (0-100)
+
+2. Form: results in another page, theme context
+
+3. Error handling
+
+4. styling
+
+5. docs
+
+6. deployment
+
+7. new branch: JS -> TS
+
+---
+
+React Chart Library
+
+- Recharts: https://www.npmjs.com/package/recharts
+- Nivo: https://www.npmjs.com/package/nivo
+
+---
+
+Table (display as of today dynamic data)
+
+- Category: total cases, active, recovered, deaths, tests
+
+Form (display historical data based on filters)
+
+- Location: Australia or Taiwan
+- Category: cases, recovered, deaths
+- Timeframe: 7/14/21/30 days
+
+Graph (display static data)
+
+- around 7 points (1/30, 2/15, 2/29, 3/15, 3/31, 4/15)
+- total deaths: reasonable range (0-100)
+
+---
+
+---
+
 # covid-19 api
 
 - API
