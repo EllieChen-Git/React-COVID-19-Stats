@@ -43,15 +43,14 @@ const data = [
   },
 ];
 
-const Graph = () => {
+const LineGraph = () => {
   return (
     <div className="graph-container">
       <h1>Death Cases</h1>
-      <ResponsiveContainer width="50%" height={480}>
+      <ResponsiveContainer width="80%" height={480}>
         <LineChart
           data={data}
           margin={{
-            top: 50,
             right: 50,
             left: 20,
             bottom: 20,
@@ -82,4 +81,4 @@ const Graph = () => {
   );
 };
 
-export default Graph;
+export default LineGraph;

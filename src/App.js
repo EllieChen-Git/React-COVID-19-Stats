@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
-import Clock from "./components/Clock/Clock";
-import ComparisonTable from "./components/Table/ComparisonTable";
-import HistoricalDataForm from "./components/Form/HistoricalDataForm";
-import Graph from "./components/Graph";
-import SocialButtons from "./components/Social/SocialButtons";
+import Clock from "./components/Clock";
+import ComparisonTable from "./components/ComparisonTable";
+import HistoricalDataForm from "./components//HistoricalDataForm";
+import LineGraph from "./components/LineGraph";
+import SocialButtons from "./components/SocialButtons";
 
 class App extends Component {
   state = {
@@ -53,7 +53,7 @@ class App extends Component {
         </div>
         <ComparisonTable />
         <HistoricalDataForm />
-        <Graph />
+        <LineGraph />
         <SocialButtons />
         <p>*Comparsion table data from Worldometers</p>
         <p>**Historial data from Johns Hopkins University</p>
