@@ -6,6 +6,25 @@
 - around 7 points (1/30, 2/15, 2/29, 3/15, 3/31, 4/15)
 - total deaths: reasonable range (0-100)
 
+```javascript
+// Aus deaths
+
+"1/31/20": 0,
+"2/15/20": 0,
+"2/29/20": 0,
+"3/15/20": 3,
+"3/31/20": 18,
+"4/15/20": 63,
+
+// Tw death
+"1/31/20": 0,
+"2/15/20": 0,
+"2/29/20": 1,
+"3/15/20": 1,
+"3/31/20": 5,
+"4/15/20": 6,
+```
+
 2. Form: results in another page, theme context
 
 3. Error handling

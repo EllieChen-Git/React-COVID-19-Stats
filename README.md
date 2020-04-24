@@ -1,5 +1,7 @@
 # React-COVID-19-Stats
 
+<!-- Need to remove development note from GitHub -->
+
 - A React project to visualise COVID-19 data between Australia and Taiwan.
 
 ---

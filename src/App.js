@@ -3,6 +3,7 @@ import "./App.css";
 import Clock from "./components/Clock/Clock";
 import ComparisonTable from "./components/Table/ComparisonTable";
 import HistoricalDataForm from "./components/Form/HistoricalDataForm";
+import Graph from "./components/Graph";
 import SocialButtons from "./components/Social/SocialButtons";
 
 class App extends Component {
@@ -34,23 +35,25 @@ class App extends Component {
     return (
       <div className="app-container">
         <h1>COVID-19 Data Visualisation: Australia & Taiwan</h1>
-        <Clock
-          icon="season_autumn.svg" // Consider changing icon based on seasons in the future
-          timezone={"Sydney - Australia"}
-          hours={sydneyHour}
-          minutes={mins}
-          seconds={seconds}
-        />
-        <Clock
-          icon="season_spring.svg" // Consider changing icon based on seasons in the future
-          timezone={"Taipei - Taiwan"}
-          hours={taipeiHour}
-          minutes={mins}
-          seconds={seconds}
-        />
-
+        <div className="clock-container">
+          <Clock
+            icon="season_autumn.svg" // Consider changing icon based on seasons in the future
+            timezone={"Sydney - Australia"}
+            hours={sydneyHour}
+            minutes={mins}
+            seconds={seconds}
+          />
+          <Clock
+            icon="season_spring.svg" // Consider changing icon based on seasons in the future
+            timezone={"Taipei - Taiwan"}
+            hours={taipeiHour}
+            minutes={mins}
+            seconds={seconds}
+          />
+        </div>
         <ComparisonTable />
         <HistoricalDataForm />
+        <Graph />
         <SocialButtons />
         <p>*Comparsion table data from Worldometers</p>
         <p>**Historial data from Johns Hopkins University</p>

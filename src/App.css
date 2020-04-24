@@ -1,6 +1,5 @@
 /* General */
-.historical-data-container,
-.comparison-table-container {
+.app-container {
   width: 80%;
   margin: 0 auto;
 }
