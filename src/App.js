@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Clock from "./components/Clock";
 import ComparisonTable from "./components/ComparisonTable";
-import HistoricalDataForm from "./components//HistoricalDataForm";
+import HistoricalDataForm from "./components/Form/HistoricalDataForm";
 import LineGraph from "./components/LineGraph";
 import SocialButtons from "./components/SocialButtons";
 
