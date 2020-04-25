@@ -31,10 +31,6 @@ const HistoricalDataForm = () => {
   const indexOfFirstData = indexOfLastData - dataPerPage;
   const currentData = data.slice(indexOfFirstData, indexOfLastData);
 
-  const onPaginate = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
-
   return (
     <div className="historical-data-container">
       <Grid container spacing={3}>
@@ -106,13 +102,15 @@ const HistoricalDataForm = () => {
             <button>Submit</button>
           </form>
         </Grid>
+
         <Results data={currentData} loading={loading} />
-        <Pages
-          dataPerPage={dataPerPage}
-          allData={data.length}
-          paginate={onPaginate}
-        />
       </Grid>
+      <div>
+        <Pages
+          count={Math.ceil(data.length / dataPerPage)}
+          setCurrentPage={setCurrentPage}
+        />
+      </div>
     </div>
   );
 };

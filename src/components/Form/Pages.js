@@ -1,23 +1,23 @@
 import React from "react";
+import Pagination from "@material-ui/lab/Pagination";
 
-const Pages = ({ allData, dataPerPage, paginate }) => {
-  const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(allData / dataPerPage); i++) {
-    pageNumbers.push(i);
-  }
+const Pages = ({ count, setCurrentPage }) => {
+  const handleChange = (event, value) => {
+    setCurrentPage(value);
+  };
 
   return (
-    <div>
-      <ul>
-        {pageNumbers.map((number) => (
-          <li key={number}>
-            <a onClick={() => paginate(number)} href="#!">
-              {number}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Pagination
+      count={count}
+      onChange={handleChange}
+      variant="outlined"
+      color="primary"
+      shape="rounded"
+      showFirstButton
+      showLastButton
+      siblingCount={0}
+      boundaryCount={2}
+    />
   );
 };
 
