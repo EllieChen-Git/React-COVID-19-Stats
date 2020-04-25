@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import Table from "@material-ui/core/Table";
@@ -14,25 +14,37 @@ const categories = ["Cases", "Deaths", "Recovered"];
 
 const HistoricalDataForm = () => {
   const [location, setLocation] = useState("australia");
-  // React Hook: const [state, setState] = useState(initialState);
-  // 'location' is the current state
-  // 'setLocation' is a function that update a piece of the state
-  // 'australia'  is the initial state
   const [category, setCategory] = useState("cases");
   const [timeframe, setTimeframe] = useState("7");
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [dataPerPage, setDataPerPage] = useState(5);
 
-  const requestData = (location, category, timeframe) => {
-    axios
-      .get(
-        `https://corona.lmao.ninja/v2/historical/${location}?lastdays=${timeframe}`
-      )
-      .then((res) => {
-        const historicalData = res.data.timeline[category];
-        return setData(historicalData || []);
-      })
-      .catch((err) => console.log(err));
+  // useEffect(() => {
+  const fetchData = async () => {
+    setLoading(true);
+    const res = await axios.get(
+      `https://corona.lmao.ninja/v2/historical/${location}?lastdays=${timeframe}`
+    );
+    const historicalData = res.data.timeline[category];
+    console.log(historicalData);
+    setData(historicalData || []);
+    setLoading(false);
   };
+  // });
+
+  // const requestData = (location, category, timeframe) => {
+  //   axios
+  //     .get(
+  //       `https://corona.lmao.ninja/v2/historical/${location}?lastdays=${timeframe}`
+  //     )
+  //     .then((res) => {
+  //       const historicalData = res.data.timeline[category];
+  //       return setData(historicalData || []);
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
 
   return (
     <div className="historical-data-container">
@@ -43,7 +55,7 @@ const HistoricalDataForm = () => {
             className="historical-data-form"
             onSubmit={(e) => {
               e.preventDefault();
-              requestData(location, category.toLowerCase(), timeframe);
+              fetchData(location, category.toLowerCase(), timeframe);
             }}
           >
             <fieldset>

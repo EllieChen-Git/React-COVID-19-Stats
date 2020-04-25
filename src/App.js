@@ -52,8 +52,8 @@ class App extends Component {
           />
         </div>
         <ComparisonTable />
-        <HistoricalDataForm />
         <LineGraph />
+        <HistoricalDataForm />
         <SocialButtons />
         <p>*Comparsion table data from Worldometers</p>
         <p>**Historial data from Johns Hopkins University</p>
