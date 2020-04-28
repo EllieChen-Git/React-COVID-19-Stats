@@ -5,6 +5,7 @@ import ComparisonTable from "./components/ComparisonTable";
 import HistoricalDataForm from "./components/Form/HistoricalDataForm";
 import LineGraph from "./components/LineGraph";
 import SocialButtons from "./components/SocialButtons";
+import ErrorBoundary from "./components/Shared/ErrorBoundary";
 
 class App extends Component {
   state = {
@@ -51,6 +52,7 @@ class App extends Component {
             seconds={seconds}
           />
         </div>
+
         <ComparisonTable />
         <LineGraph />
         <HistoricalDataForm />
@@ -62,4 +64,10 @@ class App extends Component {
   }
 }
 
-export default App;
+export default function AppErrorBoundary(props) {
+  return (
+    <ErrorBoundary>
+      <App {...props} />
+    </ErrorBoundary>
+  );
+}
