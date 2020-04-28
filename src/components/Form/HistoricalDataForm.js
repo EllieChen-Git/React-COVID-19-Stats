@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Results from "./Results";
 import Pages from "./Pages";
 import axios from "axios";
 import Grid from "@material-ui/core/Grid";
+import ThemeContext from "./../Shared/ThemeContext";
 
 const locations = ["Australia", "Taiwan"];
 const timeframes = ["10", "20", "30", "60", "all"];
 const categories = ["Cases", "Deaths", "Recovered"];
 
 const HistoricalDataForm = () => {
+  const [theme, setTheme] = useContext(ThemeContext);
+
   const [location, setLocation] = useState("australia");
   const [category, setCategory] = useState("cases");
   const [timeframe, setTimeframe] = useState("10");
@@ -35,7 +38,7 @@ const HistoricalDataForm = () => {
     <div className="historical-data-container">
       <Grid container spacing={3}>
         <Grid item xs={6}>
-          <h1>Check Historical Data**</h1>
+          <h1 style={{ color: theme }}>Check Historical Data**</h1>
           <form
             className="historical-data-form"
             onSubmit={(e) => {
@@ -98,8 +101,25 @@ const HistoricalDataForm = () => {
                   </select>
                 </label>
               </div>
+              <div>
+                <label htmlFor="theme">
+                  Theme:
+                  <select
+                    value={theme}
+                    onChange={(e) => setTheme(e.target.value)}
+                    onBlur={(e) => setTheme(e.target.value)}
+                  >
+                    <option value="peru">Peru</option>
+                    <option value="darkblue">Dark Blue</option>
+                    <option value="darkgreen">Dark Green</option>
+                  </select>
+                </label>
+              </div>
             </fieldset>
-            <button>Submit</button>
+
+            <button style={{ backgroundColor: theme, color: "white" }}>
+              Submit
+            </button>
           </form>
         </Grid>
 

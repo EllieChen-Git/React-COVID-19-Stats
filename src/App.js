@@ -3,12 +3,13 @@ import "./App.css";
 import Clock from "./components/Clock";
 import ComparisonTable from "./components/ComparisonTable";
 import HistoricalDataForm from "./components/Form/HistoricalDataForm";
-import LineGraph from "./components/LineGraph";
+import LineGraph from "./components/Graph/LineGraph";
 import SocialButtons from "./components/SocialButtons";
 import ErrorBoundary from "./components/Shared/ErrorBoundary";
 import ThemeContext from "./components/Shared/ThemeContext";
 
 const App = () => {
+  const theme = useState("darkblue");
   const [tick, setTick] = useState("1");
 
   useEffect(() => {
@@ -30,32 +31,34 @@ const App = () => {
   const seconds = ("0" + new Date().getSeconds()).slice(-2);
 
   return (
-    <div className="app-container">
-      <h1>COVID-19 Data Visualisation: Australia & Taiwan</h1>
-      <div className="clock-container">
-        <Clock
-          icon="season_autumn.svg" // Consider changing icon based on seasons in the future
-          timezone={"Sydney - Australia"}
-          hours={sydneyHour}
-          minutes={mins}
-          seconds={seconds}
-        />
-        <Clock
-          icon="season_spring.svg" // Consider changing icon based on seasons in the future
-          timezone={"Taipei - Taiwan"}
-          hours={taipeiHour}
-          minutes={mins}
-          seconds={seconds}
-        />
-      </div>
+    <ThemeContext.Provider value={theme}>
+      <div className="app-container">
+        <h1>COVID-19 Data Visualisation: Australia & Taiwan</h1>
+        <div className="clock-container">
+          <Clock
+            icon="season_autumn.svg" // Consider changing icon based on seasons in the future
+            timezone={"Sydney - Australia"}
+            hours={sydneyHour}
+            minutes={mins}
+            seconds={seconds}
+          />
+          <Clock
+            icon="season_spring.svg" // Consider changing icon based on seasons in the future
+            timezone={"Taipei - Taiwan"}
+            hours={taipeiHour}
+            minutes={mins}
+            seconds={seconds}
+          />
+        </div>
 
-      <ComparisonTable />
-      <LineGraph />
-      <HistoricalDataForm />
-      <SocialButtons />
-      <p>*Comparsion table data from Worldometers</p>
-      <p>**Historial data from Johns Hopkins University</p>
-    </div>
+        <ComparisonTable />
+        <LineGraph />
+        <HistoricalDataForm />
+        <SocialButtons />
+        <p>*Comparsion table data from Worldometers</p>
+        <p>**Historial data from Johns Hopkins University</p>
+      </div>
+    </ThemeContext.Provider>
   );
 };
 
