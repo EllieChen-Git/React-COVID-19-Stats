@@ -1,49 +1,49 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import Results from "./Results";
+import Pages from "./Pages";
 import axios from "axios";
 import Grid from "@material-ui/core/Grid";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
+import ThemeContext from "./../Shared/ThemeContext";
 
 const locations = ["Australia", "Taiwan"];
-const timeframes = ["7", "14", "21", "30", "all"];
+const timeframes = ["10", "20", "30", "60", "all"];
 const categories = ["Cases", "Deaths", "Recovered"];
 
 const HistoricalDataForm = () => {
-  const [location, setLocation] = useState("australia");
-  // React Hook: const [state, setState] = useState(initialState);
-  // 'location' is the current state
-  // 'setLocation' is a function that update a piece of the state
-  // 'australia'  is the initial state
-  const [category, setCategory] = useState("cases");
-  const [timeframe, setTimeframe] = useState("7");
-  const [data, setData] = useState([]);
+  const [theme, setTheme] = useContext(ThemeContext);
 
-  const requestData = (location, category, timeframe) => {
-    axios
-      .get(
-        `https://corona.lmao.ninja/v2/historical/${location}?lastdays=${timeframe}`
-      )
-      .then((res) => {
-        const historicalData = res.data.timeline[category];
-        return setData(historicalData || []);
-      })
-      .catch((err) => console.log(err));
+  const [location, setLocation] = useState("australia");
+  const [category, setCategory] = useState("cases");
+  const [timeframe, setTimeframe] = useState("10");
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [dataPerPage] = useState(5);
+
+  const fetchData = async () => {
+    setLoading(true);
+    const res = await axios.get(
+      `https://corona.lmao.ninja/v2/historical/${location}?lastdays=${timeframe}`
+    );
+    const historicalData = res.data.timeline[category.toLowerCase()];
+    setData(Object.entries(historicalData).reverse() || []);
+    setLoading(false);
   };
+
+  const indexOfLastData = currentPage * dataPerPage;
+  const indexOfFirstData = indexOfLastData - dataPerPage;
+  const currentData = data.slice(indexOfFirstData, indexOfLastData);
 
   return (
     <div className="historical-data-container">
       <Grid container spacing={3}>
         <Grid item xs={6}>
-          <h1>Check Historical Data**</h1>
+          <h1 style={{ color: theme }}>Check Historical Data**</h1>
           <form
             className="historical-data-form"
             onSubmit={(e) => {
               e.preventDefault();
-              requestData(location, category.toLowerCase(), timeframe);
+              fetchData(location, category, timeframe);
             }}
           >
             <fieldset>
@@ -101,33 +101,36 @@ const HistoricalDataForm = () => {
                   </select>
                 </label>
               </div>
+              <div>
+                <label htmlFor="theme">
+                  Theme:
+                  <select
+                    value={theme}
+                    onChange={(e) => setTheme(e.target.value)}
+                    onBlur={(e) => setTheme(e.target.value)}
+                  >
+                    <option value="peru">Peru</option>
+                    <option value="darkblue">Dark Blue</option>
+                    <option value="darkgreen">Dark Green</option>
+                  </select>
+                </label>
+              </div>
             </fieldset>
-            <button>Submit</button>
+
+            <button style={{ backgroundColor: theme, color: "white" }}>
+              Submit
+            </button>
           </form>
         </Grid>
-        <Grid item xs={6}>
-          <TableContainer>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell>Date</TableCell>
-                  <TableCell>Number</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {Object.keys(data).map((value, index) => {
-                  return (
-                    <TableRow key={index}>
-                      <TableCell>{value}</TableCell>
-                      <TableCell>{data[value]}</TableCell>
-                    </TableRow>
-                  );
-                })}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </Grid>
+
+        <Results data={currentData} loading={loading} />
       </Grid>
+      <div>
+        <Pages
+          count={Math.ceil(data.length / dataPerPage)}
+          setCurrentPage={setCurrentPage}
+        />
+      </div>
     </div>
   );
 };

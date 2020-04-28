@@ -21,6 +21,9 @@
 - Use TypeScript to write React App (https://create-react-app.dev/docs/adding-typescript/)
 - Implement end-to-end testing: cypress (or other end-to-end testing)
 
+* Using React Hooks
+* Use Error Boundary, React Context
+
 ---
 
 ### Building Process
