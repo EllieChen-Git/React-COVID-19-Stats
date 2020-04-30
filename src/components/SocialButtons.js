@@ -16,9 +16,9 @@ import {
   FacebookMessengerIcon,
 } from "react-share";
 
-const siteUrl = "#";
+const siteUrl = "https://covid-19-stats-aus-tw.netlify.app/";
 const title =
-  "Check out this cool website for COVID-19 data visualisation & comparison between Australia and Taiwan:";
+  "Check out this cool website for COVID-19 data visualisation & comparison between Australia and Taiwan";
 
 const SocialButtons = () => (
   <div className="social-container">

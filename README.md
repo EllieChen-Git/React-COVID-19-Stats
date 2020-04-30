@@ -4,7 +4,7 @@
 
 - GitHub Repo: https://github.com/EllieChen-Git/React-COVID-19-Stats
 
-- Deployed Site:
+- Deployed Site: https://covid-19-stats-aus-tw.netlify.app/
 
 ---
 
@@ -29,7 +29,7 @@ Example 1: April is Autumn in Australia & Spring in Taiwan
 
 Example 1: December is Summer in Australia & Winter in Taiwan
 
-<img src="./docs/clocks-2.PNG" width="300" height="175" />
+<img src="./docs/clocks-2.png" width="300" height="175" />
 
 ##### <u>Comparison Table</u>
 
@@ -94,13 +94,13 @@ In my initial planning session, everything looked so easy and shouldn't take up 
 
 - **Building Process**
 
-1. Brainstormed side project ideas
-2. Located the API I wanted to use
-3. Quick wireframing of the site
-4. Created app with 'create-react-app' and setup README file
-5. Broke down the components & time estimation
-6. Coding & debugging
-7. Styling & documentation
+  1. Brainstormed side project ideas
+  2. Located the API I wanted to use
+  3. Quick wireframing of the site
+  4. Created app with 'create-react-app' and setup README file
+  5. Broke down the components & time estimation
+  6. Coding & debugging
+  7. Styling & documentation
 
 - **Time Estimation & Outcome**
 
@@ -118,8 +118,8 @@ In my initial planning session, everything looked so easy and shouldn't take up 
 |      Error handling: React Error Boundary       |        1hr         |             1.5hrs              |
 |      Convert from JavaScript to TypeScript      |        5hr         |            (not yet)            |
 |                  Styling & RWD                  |        3hrs        | 3hrs (not fully responsive yet) |
-|                   Polish docs                   |        1hr         |                                 |
-|                      Total                      |       30hrs        |                                 |
+|                   Polish docs                   |        1hr         |               1hr               |
+|                      Total                      |       30hrs        |             42.5hrs             |
 
 ---
 

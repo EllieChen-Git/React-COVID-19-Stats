@@ -62,7 +62,6 @@ legend {
 }
 
 .clock-face {
-  background: url(/clock.svg) no-repeat center;
   background-size: 88%;
   border-radius: 50%;
   border: 5px solid black;
