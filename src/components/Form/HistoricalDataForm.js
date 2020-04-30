@@ -5,13 +5,10 @@ import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import ThemeContext from "./../Shared/ThemeContext";
 
-const locations = ["Australia", "Taiwan"];
-const timeframes = ["10", "20", "30", "60", "all"];
-const categories = ["Cases", "Deaths", "Recovered"];
+// API endpoint: https://corona.lmao.ninja/v2/historical/${location}?lastdays=${timeframe}
 
 const HistoricalDataForm = () => {
   const [theme, setTheme] = useContext(ThemeContext);
-
   const [location, setLocation] = useState("australia");
   const [category, setCategory] = useState("cases");
   const [timeframe, setTimeframe] = useState("10");
@@ -19,6 +16,10 @@ const HistoricalDataForm = () => {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [dataPerPage] = useState(5);
+
+  const locations = ["Australia", "Taiwan"];
+  const timeframes = ["10", "20", "30", "60", "all"];
+  const categories = ["Cases", "Deaths", "Recovered"];
 
   const fetchData = async () => {
     setLoading(true);
@@ -38,7 +39,7 @@ const HistoricalDataForm = () => {
     <div className="historical-data-container">
       <Grid container spacing={3}>
         <Grid item xs={6}>
-          <h1 style={{ color: theme }}>Check Historical Data**</h1>
+          <h1 style={{ color: theme }}>Historical Data</h1>
           <form
             className="historical-data-form"
             onSubmit={(e) => {
@@ -47,7 +48,7 @@ const HistoricalDataForm = () => {
             }}
           >
             <fieldset>
-              <legend>Select Options</legend>
+              <legend>Selection Criteria</legend>
 
               <div>
                 <label htmlFor="location">

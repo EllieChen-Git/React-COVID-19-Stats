@@ -69,6 +69,10 @@ const SocialButtons = () => (
         <WhatsappIcon round={true} />
       </WhatsappShareButton>
     </div>
+    <p>
+      &copy;
+      {new Date().getFullYear()} Ellie Chen - All Rights Reserved
+    </p>
   </div>
 );
 

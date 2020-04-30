@@ -1,3 +1,7 @@
+// I decided not to make another API call here
+// Data - Australia: https://corona.lmao.ninja/v2/historical/australia
+// Data - Taiwan: https://corona.lmao.ninja/v2/historical/taiwan
+
 export const graphData = [
   {
     date: "31 Jan",
