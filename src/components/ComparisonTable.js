@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import ThemeContext from "./Shared/ThemeContext";
 import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import Table from "@material-ui/core/Table";
@@ -9,7 +10,10 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 
+// API endpoint: https://corona.lmao.ninja/v2/countries/{location}
+
 const ComparisonTable = () => {
+  const [theme] = useContext(ThemeContext);
   const [twData, setTwData] = useState({});
   const [ausData, setAusData] = useState({});
 
@@ -66,30 +70,30 @@ const ComparisonTable = () => {
 
   return (
     <div className="comparison-table-container">
-      <h1>Comparison Table*</h1>
+      <h1 style={{ color: theme }}>Comparison Table</h1>
       <Grid container>
         <Grid item xs={12}>
           <TableContainer component={Paper}>
             <Table aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell>Satistics</TableCell>
+                  <TableCell></TableCell>
                   <TableCell align="left">Australia</TableCell>
                   <TableCell align="left">Taiwan</TableCell>
                   <TableCell align="left">Difference</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>Flag</TableCell>
+                  <TableCell style={{ fontWeight: "bold" }}>Flag</TableCell>
                   <TableCell align="left">
                     <img
-                      style={{ width: "150px", height: "90px" }} // ratio 5:3 (temp inline styling)
+                      style={{ width: "150px", height: "90px" }}
                       src="./aus-flag.png"
                       alt="Australia Flag"
                     />
                   </TableCell>
                   <TableCell align="left">
                     <img
-                      style={{ width: "150px", height: "90px" }} // ratio 5:3 (temp inline styling)
+                      style={{ width: "150px", height: "90px" }}
                       src="./tw-flag.png"
                       alt="Taiwan Flag"
                     />
@@ -100,7 +104,11 @@ const ComparisonTable = () => {
               <TableBody>
                 {rows.map((row) => (
                   <TableRow key={row.name}>
-                    <TableCell component="th" scope="row">
+                    <TableCell
+                      component="th"
+                      scope="row"
+                      style={{ fontWeight: "bold" }}
+                    >
                       {row.name}
                     </TableCell>
                     <TableCell align="left">{row.australia}</TableCell>
@@ -114,7 +122,6 @@ const ComparisonTable = () => {
             </Table>
           </TableContainer>
           <p>Last updated: {new Date(lastUpdated).toString()}</p>
-          {/* Move to App.js or Footer */}
         </Grid>
       </Grid>
     </div>
