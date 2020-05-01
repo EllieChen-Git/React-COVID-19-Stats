@@ -104,7 +104,7 @@ const HistoricalDataForm = () => {
               </div>
               <div>
                 <label htmlFor="theme">
-                  Theme:
+                  Theme Colour:
                   <select
                     value={theme}
                     onChange={(e) => setTheme(e.target.value)}
