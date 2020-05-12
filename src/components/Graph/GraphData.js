@@ -33,4 +33,9 @@ export const graphData = [
     AUS: 63,
     TW: 6,
   },
+  {
+    date: "30 Apr",
+    AUS: 93,
+    TW: 6,
+  },
 ];
