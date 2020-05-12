@@ -17,11 +17,11 @@ const Results = ({ data, loading }) => {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell style={{ color: theme, fontWeight: "bold" }}>
-              Date
+            <TableCell style={{ color: theme }}>
+              <strong>Date</strong>
             </TableCell>
-            <TableCell style={{ color: theme, fontWeight: "bold" }}>
-              Number
+            <TableCell style={{ color: theme }}>
+              <strong>Number</strong>
             </TableCell>
           </TableRow>
         </TableHead>

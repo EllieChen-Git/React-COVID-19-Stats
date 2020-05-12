@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import ThemeContext from "./Shared/ThemeContext";
 import axios from "axios";
-import Grid from "@material-ui/core/Grid";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -9,8 +8,6 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-
-// API endpoint: https://corona.lmao.ninja/v2/countries/{location}
 
 const ComparisonTable = () => {
   const [theme] = useContext(ThemeContext);
@@ -56,74 +53,76 @@ const ComparisonTable = () => {
   };
 
   const rows = [
-    createData("Total Cases", ausCases, twCases, ausCases - twCases),
-    createData("- Active", ausActive, twActive, ausActive - twActive),
+    createData("Active", ausActive, twActive, ausActive - twActive),
     createData(
-      "- Recovered",
+      "Recovered",
       ausRecovered,
       twRecovered,
       ausRecovered - twRecovered
     ),
-    createData("- Deaths", ausDeaths, twDeaths, ausDeaths - twDeaths),
+    createData("Deaths", ausDeaths, twDeaths, ausDeaths - twDeaths),
+    createData("Total Cases", ausCases, twCases, ausCases - twCases),
     createData("Tests Conducted", ausTests, twTests, ausTests - twTests),
   ];
 
   return (
-    <div className="comparison-table-container">
-      <h1 style={{ color: theme }}>Comparison Table</h1>
-      <Grid container>
-        <Grid item xs={12}>
-          <TableContainer component={Paper}>
-            <Table aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell></TableCell>
-                  <TableCell align="left">Australia</TableCell>
-                  <TableCell align="left">Taiwan</TableCell>
-                  <TableCell align="left">Difference</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell style={{ fontWeight: "bold" }}>Flag</TableCell>
-                  <TableCell align="left">
-                    <img
-                      style={{ width: "150px", height: "90px" }}
-                      src="./aus-flag.png"
-                      alt="Australia Flag"
-                    />
+    <div className="container">
+      <div className="comparison-table">
+        <h1 style={{ color: theme }}>Comparison Table</h1>
+        <TableContainer component={Paper} style={{ background: "#c4f0e7" }}>
+          <Table aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell></TableCell>
+                <TableCell align="left">
+                  <strong>Australia</strong>
+                </TableCell>
+                <TableCell align="left">
+                  <strong>Taiwan</strong>
+                </TableCell>
+                <TableCell align="left">
+                  <strong>Difference</strong>
+                </TableCell>
+              </TableRow>
+              <TableRow className="comparison-table__flag">
+                <TableCell>
+                  <strong>Flag</strong>
+                </TableCell>
+                <TableCell align="left">
+                  <img
+                    className="comparision-table__image"
+                    src="./aus-flag.png"
+                    alt="Australian Flag"
+                  />
+                </TableCell>
+                <TableCell align="left">
+                  <img
+                    className="comparision-table__image"
+                    src="./tw-flag.png"
+                    alt="Taiwanese Flag"
+                  />
+                </TableCell>
+                <TableCell align="left"></TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows.map((row) => (
+                <TableRow key={row.name}>
+                  <TableCell component="th" scope="row">
+                    <strong>{row.name}</strong>
                   </TableCell>
+                  <TableCell align="left">{row.australia}</TableCell>
+                  <TableCell align="left">{row.taiwan}</TableCell>
                   <TableCell align="left">
-                    <img
-                      style={{ width: "150px", height: "90px" }}
-                      src="./tw-flag.png"
-                      alt="Taiwan Flag"
-                    />
+                    {row.difference || "Loading..."}
                   </TableCell>
-                  <TableCell align="left"></TableCell>
                 </TableRow>
-              </TableHead>
-              <TableBody>
-                {rows.map((row) => (
-                  <TableRow key={row.name}>
-                    <TableCell
-                      component="th"
-                      scope="row"
-                      style={{ fontWeight: "bold" }}
-                    >
-                      {row.name}
-                    </TableCell>
-                    <TableCell align="left">{row.australia}</TableCell>
-                    <TableCell align="left">{row.taiwan}</TableCell>
-                    <TableCell align="left">
-                      {row.difference || "Loading..."}
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-          <p>Last updated: {new Date(lastUpdated).toString()}</p>
-        </Grid>
-      </Grid>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <p>Last updated: {new Date(lastUpdated).toString()}</p>
+      </div>
     </div>
   );
 };

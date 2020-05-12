@@ -5,20 +5,42 @@
   margin: 0 auto;
 }
 
+body {
+  background: lightyellow;
+}
+
+/* Header */
+.header {
+  text-align: center;
+}
+
+/* Comparison Table */
+.comparison-table__flag {
+  visibility: hidden;
+}
+
+.comparision-table__image {
+  display: none;
+}
+
 /* Historical Data Form */
 .historical-data__form {
-  background-color: #acf4e6;
+  background-color: #c4f0e7;
   padding: 35px 15px 15px;
   border-radius: 5px;
   font-size: 20px;
+}
+
+.historical-data__form button {
+  color: white;
 }
 
 .historical-data__form legend {
   font-size: 25px;
 }
 
-.MuiTable-root {
-  margin-bottom: 20px;
+.MuiPagination-root {
+  margin-top: 20px;
 }
 
 /* Social Buttons */
@@ -40,18 +62,12 @@ footer {
 }
 
 /* Clock */
-.clock-container {
-  max-width: 1000px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 20px 200px;
-}
 .clock {
   display: inline-block;
 }
 
 .clock + .clock {
-  margin-left: 100px;
+  margin-left: 10px;
 }
 
 .clock-label {
@@ -172,10 +188,21 @@ footer {
 }
 
 /* Media Queries */
+@media (min-width: 750px) {
+  .comparison-table__flag {
+    visibility: visible;
+  }
 
-/* @media (min-width: 600px){
+  .comparision-table__image {
+    display: block;
+    width: 150px;
+    height: 90px;
+  }
 
-} */
+  .clock + .clock {
+    margin-left: 100px;
+  }
+}
 
 @media (min-width: 900px) {
   .historical-data {
@@ -188,5 +215,14 @@ footer {
 
   .historical-data .col + .col {
     margin-left: 50px;
+  }
+
+  .graph {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .clock--container {
+    margin-left: 25%;
   }
 }
