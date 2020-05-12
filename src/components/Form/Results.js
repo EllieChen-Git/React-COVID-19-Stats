@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import Grid from "@material-ui/core/Grid";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -14,32 +13,30 @@ const Results = ({ data, loading }) => {
     return <h2 style={{ color: theme }}>Loading...</h2>; // can do a spinner afterwards
   }
   return (
-    <Grid item xs={6}>
-      <TableContainer>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell style={{ color: theme, fontWeight: "bold" }}>
-                Date
-              </TableCell>
-              <TableCell style={{ color: theme, fontWeight: "bold" }}>
-                Number
-              </TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {data.map((entry) => {
-              return (
-                <TableRow key={entry[0]}>
-                  <TableCell>{entry[0]}</TableCell>
-                  <TableCell>{entry[1]}</TableCell>
-                </TableRow>
-              );
-            })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Grid>
+    <TableContainer>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell style={{ color: theme, fontWeight: "bold" }}>
+              Date
+            </TableCell>
+            <TableCell style={{ color: theme, fontWeight: "bold" }}>
+              Number
+            </TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {data.map((entry) => {
+            return (
+              <TableRow key={entry[0]}>
+                <TableCell>{entry[0]}</TableCell>
+                <TableCell>{entry[1]}</TableCell>
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 };
 

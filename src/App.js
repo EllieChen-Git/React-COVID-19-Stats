@@ -50,29 +50,33 @@ const App = () => {
 
   return (
     <ThemeContext.Provider value={theme}>
-      <div className="app-container">
-        <h1>COVID-19 Data Visualisation: Australia & Taiwan</h1>
-        <div className="clock-container">
-          <Clock
-            icon={"season_" + seasons[currentMonth][0] + ".svg"}
-            timezone={"Sydney - Australia"}
-            hours={sydneyHour}
-            minutes={mins}
-            seconds={seconds}
-          />
-          <Clock
-            icon={"season_" + seasons[currentMonth][1] + ".svg"}
-            timezone={"Taipei - Taiwan"}
-            hours={taipeiHour}
-            minutes={mins}
-            seconds={seconds}
-          />
-        </div>
+      <h1>COVID-19 Data Visualisation: Australia & Taiwan</h1>
+      <div className="clock-container">
+        <Clock
+          icon={"season_" + seasons[currentMonth][0] + ".svg"}
+          timezone={"Sydney - Australia"}
+          hours={sydneyHour}
+          minutes={mins}
+          seconds={seconds}
+        />
+        <Clock
+          icon={"season_" + seasons[currentMonth][1] + ".svg"}
+          timezone={"Taipei - Taiwan"}
+          hours={taipeiHour}
+          minutes={mins}
+          seconds={seconds}
+        />
+      </div>
 
-        <ComparisonTable />
-        <LineGraph />
-        <HistoricalDataForm />
-        <SocialButtons />
+      <ComparisonTable />
+      <LineGraph />
+      <HistoricalDataForm />
+      <SocialButtons />
+      <div className="container">
+        <footer>
+          &copy;
+          {new Date().getFullYear()} Ellie Chen - All Rights Reserved
+        </footer>
       </div>
     </ThemeContext.Provider>
   );
