@@ -50,22 +50,29 @@ const App = () => {
 
   return (
     <ThemeContext.Provider value={theme}>
-      <h1>COVID-19 Data Visualisation: Australia & Taiwan</h1>
-      <div className="clock-container">
-        <Clock
-          icon={"season_" + seasons[currentMonth][0] + ".svg"}
-          timezone={"Sydney - Australia"}
-          hours={sydneyHour}
-          minutes={mins}
-          seconds={seconds}
-        />
-        <Clock
-          icon={"season_" + seasons[currentMonth][1] + ".svg"}
-          timezone={"Taipei - Taiwan"}
-          hours={taipeiHour}
-          minutes={mins}
-          seconds={seconds}
-        />
+      <div className="container">
+        <h1 className="header">
+          COVID-19 Data Visualisation: Australia & Taiwan
+        </h1>
+      </div>
+
+      <div className="container">
+        <div className="clock--container">
+          <Clock
+            icon={"season_" + seasons[currentMonth][0] + ".svg"}
+            timezone={"Sydney - Australia"}
+            hours={sydneyHour}
+            minutes={mins}
+            seconds={seconds}
+          />
+          <Clock
+            icon={"season_" + seasons[currentMonth][1] + ".svg"}
+            timezone={"Taipei - Taiwan"}
+            hours={taipeiHour}
+            minutes={mins}
+            seconds={seconds}
+          />
+        </div>
       </div>
 
       <ComparisonTable />

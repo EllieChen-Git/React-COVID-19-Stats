@@ -16,7 +16,7 @@ const Pages = ({ count, setCurrentPage }) => {
       showFirstButton
       showLastButton
       siblingCount={0}
-      boundaryCount={2}
+      boundaryCount={1}
     />
   );
 };

@@ -115,9 +115,7 @@ const HistoricalDataForm = () => {
             </div>
           </fieldset>
 
-          <button style={{ backgroundColor: theme, color: "white" }}>
-            Submit
-          </button>
+          <button style={{ backgroundColor: theme }}>Submit</button>
         </form>
 
         <div className="historical-data__result col">

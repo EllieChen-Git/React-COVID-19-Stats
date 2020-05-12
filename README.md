@@ -106,32 +106,30 @@ In my initial planning session, everything looked so easy and shouldn't take up 
 
 - **Time Estimation & Outcome**
 
-|                :star: Task :star:                 | Initial Estimation |      Actual Implementation      |
-| :-----------------------------------------------: | :----------------: | :-----------------------------: |
-|              Planning & wireframing               |        2hrs        |             4.5hrs              |
-|         Seasonal Clocks (AUS & TW times)          |        1hr         |              7hrs               |
-|         Comparison table (consuming API)          |        3hrs        |              8hrs               |
-|           Form: React Hooks (dropdown)            |        2hrs        |              13hrs              |
-|       Trend graph (date & confirmed deaths)       |        3hr         |      1.5hrs (use package)       |
-| Public exposure cases in suburbs: Google maps API |        3hrs        |           (cancelled)           |
-|                  Comment section                  |        3hrs        |           (cancelled)           |
-|         Social media share functionality          |        2hrs        |      1.5hrs (use package)       |
-|            Theme colour: React Context            |        1hr         |             1.5hrs              |
-|       Error handling: React Error Boundary        |        1hr         |             1.5hrs              |
-|     Converting from JavaScript to TypeScript      |        5hr         |            (not yet)            |
-|          Styling & responsive web design          |        3hrs        | 3hrs (not fully responsive yet) |
-|              Polishing documentation              |        1hr         |               1hr               |
-|                       Total                       |       30hrs        |             42.5hrs             |
+|                :star: Task :star:                 | Initial Estimation | Actual Implementation |
+| :-----------------------------------------------: | :----------------: | :-------------------: |
+|              Planning & wireframing               |        2hrs        |        4.5hrs         |
+|         Seasonal Clocks (AUS & TW times)          |        1hr         |         7hrs          |
+|         Comparison table (consuming API)          |        3hrs        |         8hrs          |
+|           Form: React Hooks (dropdown)            |        2hrs        |         13hrs         |
+|       Trend graph (date & confirmed deaths)       |        3hr         | 1.5hrs (use package)  |
+| Public exposure cases in suburbs: Google maps API |        3hrs        |      (cancelled)      |
+|                  Comment section                  |        3hrs        |      (cancelled)      |
+|         Social media share functionality          |        2hrs        | 1.5hrs (use package)  |
+|            Theme colour: React Context            |        1hr         |        1.5hrs         |
+|       Error handling: React Error Boundary        |        1hr         |        1.5hrs         |
+|     Converting from JavaScript to TypeScript      |        5hr         |       (not yet)       |
+|          Styling & responsive web design          |        3hrs        |        5.5hrs         |
+|              Polishing documentation              |        1hr         |          1hr          |
+|                       Total                       |       30hrs        |         45hrs         |
 
 ---
 
 ### Future Features
 
-1. Making this website responsive: Need to think about how to present table on mobiles.
+1. Converting code from JavaScript to TypeScript.
 
-2. Converting code from JavaScript to TypeScript.
-
-3. Implementing end-to-end testing for single page application.
+2. Implementing end-to-end testing for single page application.
 
 ---
 
