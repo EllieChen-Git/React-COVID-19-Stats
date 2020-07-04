@@ -45,9 +45,9 @@ const HistoricalDataForm = () => {
           }}
         >
           <fieldset>
-            <legend>Selection Criteria</legend>
+            <legend>Select Your Options</legend>
 
-            <div>
+            <div className="historical-data__form--field">
               <label htmlFor="location">
                 Location:
                 <select
@@ -65,7 +65,7 @@ const HistoricalDataForm = () => {
               </label>
             </div>
 
-            <div>
+            <div className="historical-data__form--field">
               <label htmlFor="category">
                 Category:
                 <select
@@ -82,7 +82,7 @@ const HistoricalDataForm = () => {
                 </select>
               </label>
             </div>
-            <div>
+            <div className="historical-data__form--field">
               <label htmlFor="timeframe">
                 Timeframe:
                 <select
@@ -99,7 +99,7 @@ const HistoricalDataForm = () => {
                 </select>
               </label>
             </div>
-            <div>
+            <div className="historical-data__form--field">
               <label htmlFor="theme">
                 Theme Colour:
                 <select

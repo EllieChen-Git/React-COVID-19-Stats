@@ -4,11 +4,6 @@
 
 export const graphData = [
   {
-    date: "31 Jan",
-    AUS: 0,
-    TW: 0,
-  },
-  {
     date: "15 Feb",
     AUS: 0,
     TW: 0,
@@ -37,5 +32,25 @@ export const graphData = [
     date: "30 Apr",
     AUS: 93,
     TW: 6,
+  },
+  {
+    date: "15 May",
+    AUS: 98,
+    TW: 7,
+  },
+  {
+    date: "31 May",
+    AUS: 103,
+    TW: 7,
+  },
+  {
+    date: "15 Jun",
+    AUS: 102,
+    TW: 7,
+  },
+  {
+    date: "30 Jun",
+    AUS: 104,
+    TW: 7,
   },
 ];

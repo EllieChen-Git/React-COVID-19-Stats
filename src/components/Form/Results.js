@@ -27,9 +27,16 @@ const Results = ({ data, loading }) => {
         </TableHead>
         <TableBody>
           {data.map((entry) => {
+            // Convert date format into Australian style
+            const date = entry[0];
+            const dateArray = date.split("/");
+            const day = ("0" + dateArray[1]).slice(-2);
+            const month = ("0" + dateArray[0]).slice(-2);
+            const year = "20" + dateArray[2];
+
             return (
-              <TableRow key={entry[0]}>
-                <TableCell>{entry[0]}</TableCell>
+              <TableRow key={date}>
+                <TableCell>{`${day}/${month}/${year}`}</TableCell>
                 <TableCell>{entry[1]}</TableCell>
               </TableRow>
             );

@@ -2,7 +2,7 @@
 .container {
   max-width: 1200px;
   width: 80%;
-  margin: 0 auto;
+  margin: 50px auto;
 }
 
 body {
@@ -37,6 +37,10 @@ body {
 
 .historical-data__form legend {
   font-size: 25px;
+}
+
+.historical-data__form--field {
+  padding: 5px 0;
 }
 
 .MuiPagination-root {

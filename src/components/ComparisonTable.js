@@ -84,7 +84,8 @@ const ComparisonTable = () => {
                   <strong>Difference</strong>
                 </TableCell>
               </TableRow>
-              <TableRow className="comparison-table__flag">
+              {/* NOTE: This column is temporarily hidden */}
+              {/* <TableRow className="comparison-table__flag">
                 <TableCell>
                   <strong>Flag</strong>
                 </TableCell>
@@ -103,7 +104,7 @@ const ComparisonTable = () => {
                   />
                 </TableCell>
                 <TableCell align="left"></TableCell>
-              </TableRow>
+              </TableRow> */}
             </TableHead>
             <TableBody>
               {rows.map((row) => (
