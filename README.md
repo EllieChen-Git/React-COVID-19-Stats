@@ -10,10 +10,10 @@
 
 ### Problems I Tried to Solve:
 
-- People no longer need to go to multiple sites to collect and compare the COVID-19 data between Australia and Taiwan.
-- Both real-time data and historical data is presented in one single place.
-- Instead of merely displaying plain numbers, data is also visualised in different forms, like table and line graph.
-- Social-sharing function embedded, so it's easier for people to share information with their family and friends via social media.
+- **One-stop solution**: People no longer need to go to multiple websites to collect and compare the COVID-19 data between Australia and Taiwan by themselves.
+- **Real-time and historical data**: Both real-time data and historical data is presented in one single place.
+- **Visualisation**: Instead of merely displaying plain numbers, data is also visualised in different forms, like a table and a line graph.
+- **Social-sharing function**: One-click sharing function makes it easier for people to share information with their family and friends via social media.
 
 ---
 
@@ -47,18 +47,19 @@ Example: Once users select the theme colour, the colour of the form submit butto
 
 Example 1: April is Autumn in Australia & Spring in Taiwan
 
-<img src="./docs/clocks-1.gif" width="350" height="175" />
+<img src="./docs/clocks-1.gif" width="300" height="150" />
 
 Example 2: December is Summer in Australia & Winter in Taiwan
 
-<img src="./docs/clocks-2.png" width="300" height="175" />
+<img src="./docs/clocks-2.gif" width="300" height="150" />
 
 ---
 
 ##### <u>Comparison Table</u>
 
 1. Comparing the total cases, active cases, recovered cases, deaths and tests in Australia and Taiwan.
-2. Retrieving data with Axios and a public API.
+2. Retrieving data with Axios and a public API - **disease sh**
+   (https://corona.lmao.ninja/docs/)
 
 <img src="./docs/table.PNG" width="400" height="235" />
 
@@ -66,7 +67,7 @@ Example 2: December is Summer in Australia & Winter in Taiwan
 
 ##### <u>Interactive Graph</u>
 
-- Interactive graph with a third-party package [Rechart](https://recharts.org/en-US/).
+- Interactive graph built with a third-party package [Rechart](https://recharts.org/en-US/).
 
 <img src="./docs/graph.gif" width="400" height="200" />
 
